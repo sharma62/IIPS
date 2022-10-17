@@ -10,7 +10,7 @@
         </p>
     </div>
 </div>
-    <!-- <div class="container">
+    <div class="container">
         <h2 class="text-center">Pay Fee</h2>
         <div class="row my-4">
             <div class="col">
@@ -25,5 +25,5 @@
 
             </div>  
         </div> 
-</div>-->
+</div>
 <?php include_once 'bottom.php' ?>
