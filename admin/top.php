@@ -56,6 +56,7 @@ if (!isset($_SESSION['IS_LOGIN'])) {
       display: inline-block;
       width: 33%;
     }
+    
   </style>
 </head>
 
