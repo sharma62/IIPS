@@ -6,6 +6,7 @@ $father_name = "";
 $mother_name="";
 $birth_date="";
 $total_amut="";
+$due_amut= "";
 
 if (isset($_POST['submit'])) {
     $addmission_no = get_safe_value($_POST['addmission_no']);
