@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
                     <td><?php echo $due_amut ?></td>
                 </tr>
             </table>
-            <div class="btn btn-primary offset-8 mt-3"> Process To Pay </div>
+            <div class="btn btn-primary offset-8 mt-3" role="button"> Process To Pay </div>
         </div>
     </div>
 </div>
