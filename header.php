@@ -10,7 +10,7 @@ include('function.inc.php');
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><?php echo  'IIPS -' . strtoupper($title[0]); ?></title>
+    <title><?php echo  'IIPS -' . strtolower($title[0]); ?></title>
     <meta name="description" content="">
     <!-- font awsome -->
     <script src="https://kit.fontawesome.com/43aded160e.js" crossorigin="anonymous"></script>
@@ -150,7 +150,7 @@ include('function.inc.php');
         </div>
     </div>
 </div>
-<section class="container-fluid ">
+<!-- <section class="container-fluid ">
 
     <div class="topnav" id="myTopnav">
         <a href="#home" class="active">Home</a>
@@ -177,4 +177,4 @@ include('function.inc.php');
     document.body.className="animate-bottom";
  </script>
 
-</section>
+</section> -->

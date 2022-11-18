@@ -50,7 +50,7 @@ try {
                     $class_sub_title = "<sup>th</sup>";
                 }
                 // prx($class_sub_title);
-                echo "Class " . $queryLast_ele[1] . $class_sub_title ?></span>
+                echo "Class " . $queryLast_ele[1] . $class_sub_title  ?></span>
             <h4><?php  # echo strtolower($_GET['name']); 
                 ?></h4>
         </h1>
