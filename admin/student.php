@@ -1,21 +1,23 @@
 <?php
 include('top.php');
- 
-// prx($_GET);
 
-try{
+$query_arr = explode("=", $_SERVER["QUERY_STRING"]);
+$queryLast_ele = explode("_", $query_arr[2]);
+// prx($queryLast_ele[1]);
+
+try {
 
     $class_code = $_GET['class_code'];
-     if ((isset($_GET['type']) && $_GET['type'] !== '') && isset($_GET['addmission_no']) && isset($_GET['addmission_no']) > 0) {
-        
+    if ((isset($_GET['type']) && $_GET['type'] !== '') && isset($_GET['addmission_no']) && isset($_GET['addmission_no']) > 0) {
+
         // $stu_addmission_no => fatch and use from URL
         $stu_addmission_no = get_safe_value($_GET['addmission_no']);
         $type = get_safe_value($_GET['type']);
-        
+
         if ($type == 'delete') {
             mysqli_query($con, "DELETE FROM class_1 WHERE addmission_no ='$stu_addmission_no'");
         }
-        
+
         if ($type == 'active' || $type == 'deactive') {
             $status = 1;
             if ($type == 'deactive') {
@@ -24,27 +26,38 @@ try{
             mysqli_query($con, "UPDATE class_1 SET status = '$status' WHERE addmission_no = '$stu_addmission_no'");
         }
     }
-    
+
     $sql = "SELECT * FROM class_1 c1 INNER JOIN class_master cm ON c1.class_code = cm.class_code where cm.class_code = '$class_code'";
     $query = mysqli_query($con, $sql);
     $query_num_row = mysqli_num_rows($query);
-   
-}catch(Exception $e){
+} catch (Exception $e) {
     echo "Error code: " . $e->getCode();
 }
-    ?>
+?>
 
 <div class="card">
     <div class="card-body">
         <a class="btn btn-dark" href="class.php">Back</a>
-        <h1 class="text-center">Students List
-            <h4><?php # echo strtoupper($_GET['class_name']); ?></h4>
+        <h1 class="text-center"> <span style="color:cadetblue">
+                <?php
+                if ($queryLast_ele[1] == 1) {
+                    $class_sub_title = "<sup>st</sup>";
+                } else if ($queryLast_ele[1] == 2) {
+                    $class_sub_title = "<sup>nd</sup>";
+                } else if ($queryLast_ele[1] == 3) {
+                    $class_sub_title = "<sup>rd</sup>";
+                } else {
+                    $class_sub_title = "<sup>th</sup>";
+                }
+                // prx($class_sub_title);
+                echo "Class " . $queryLast_ele[1] . $class_sub_title ?></span>
+            <h4><?php  # echo strtolower($_GET['name']); 
+                ?></h4>
         </h1>
         <hr>
         <div class="row py-4">
             <div class="col">
-
-                <h1><a href="manage_student.php?class_code=<?php echo $class_code?>">Add Student</a></h1>
+                <h1><a href="manage_student.php?class_code=<?php echo $class_code ?>">Add Student</a></h1>
             </div>
         </div>
         <div class="row">
