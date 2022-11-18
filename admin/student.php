@@ -39,18 +39,8 @@ try {
     <div class="card-body">
         <a class="btn btn-dark" href="class.php">Back</a>
         <h1 class="text-center"> <span style="color:cadetblue">
-                <?php
-                if ($queryLast_ele[1] == 1) {
-                    $class_sub_title = "<sup>st</sup>";
-                } else if ($queryLast_ele[1] == 2) {
-                    $class_sub_title = "<sup>nd</sup>";
-                } else if ($queryLast_ele[1] == 3) {
-                    $class_sub_title = "<sup>rd</sup>";
-                } else {
-                    $class_sub_title = "<sup>th</sup>";
-                }
-                // prx($class_sub_title);
-                echo "Class " . $queryLast_ele[1] . $class_sub_title  ?></span>
+               
+              
             <h4><?php  # echo strtolower($_GET['name']); 
                 ?></h4>
         </h1>
