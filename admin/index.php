@@ -8,6 +8,7 @@ $birth_date = "";
 $total_amut = "";
 $due_amut = "";
 $std = "";
+$validate_addmission_no = "";
 
 if (isset($_POST['submit'])) {
 
@@ -17,13 +18,18 @@ if (isset($_POST['submit'])) {
     $addmission_no = get_safe_value($_POST['addmission_no']);
     $sql = "SELECT * FROM class_1 WHERE addmission_no = '$addmission_no' ";
     $res   = mysqli_query($con, $sql);
-    $res_fetch_assoc =   mysqli_fetch_assoc($res);
-    $name = $res_fetch_assoc['name'];
-    $father_name = $res_fetch_assoc['father_name'];
-    $mother_name = $res_fetch_assoc['mother_name'];
-    $birth_date = $res_fetch_assoc['birth_date'];
-    $total_amut = $res_fetch_assoc['total_amut'];
-    $due_amut = $res_fetch_assoc['due_amut'];
+    if(mysqli_num_rows($res)){
+
+        $res_fetch_assoc =   mysqli_fetch_assoc($res);
+        $name = $res_fetch_assoc['name'];
+        $father_name = $res_fetch_assoc['father_name'];
+        $mother_name = $res_fetch_assoc['mother_name'];
+        $birth_date = $res_fetch_assoc['birth_date'];
+        $total_amut = $res_fetch_assoc['total_amut'];
+        $due_amut = $res_fetch_assoc['due_amut'];
+    }else{
+        $validate_addmission_no = "* Invalid Addmission No ";
+    }
 
     // $res_2_fatch_assoc= mysqli_fetch_assoc($res_2);
     // $std = $res_2_fatch_assoc['']
@@ -47,17 +53,18 @@ if (isset($_POST['submit'])) {
         <div class="col">
             <form action="" method="post">
                 <label for="Admission_no">Addmission No.</label>
-                <input type="text" class="form-control w-50" name="addmission_no" placeholder="Addmissoin No.">
+                <small class="text-danger"> <?php echo $validate_addmission_no ?></small>
+                <input type="text" class="form-control w-50" name="addmission_no" placeholder="Addmissoin No." required>
                 <button class="btn btn-primary mt-2" name="submit">Search</button>
             </form>
         </div>
-        <div class="col-7">
+        <div class="col-7 ">
             <h4 class="text-center py-3">Profile</h4>
             <table class="table ">
 
                 <tr>
                     <th>Admission No. </th>
-                    <td><?php echo $addmission_no ?></td>
+                    <td><?php echo mysqli_num_rows($res)?$addmission_no:" " ?></td>
                 </tr>
                 <tr>
                     <th>Name</th>
@@ -79,14 +86,14 @@ if (isset($_POST['submit'])) {
                 </tr>
                 <tr>
                     <th>Total Ammount</th>
-                    <td><?php echo $total_amut ?></td>
+                    <td><?php echo $total_amut ? "&#8377; ".$total_amut." /-":" "; ?></td>
                 </tr>
                 <tr>
                     <th>Due</th>
-                    <td><?php echo $due_amut ?></td>
+                    <td><?php echo $due_amut ? "&#8377; ".$due_amut." /-":" " ;?></td>
                 </tr>
             </table>
-            <button class="btn btn-primary offset-8 mt-3" role="button" name="submit"> Process To Pay </button>
+            <button class="btn btn-primary offset-8 mt-3 " role="button" name="submit"> Process To Pay </button>
         </div>
     </div>
 </div>
