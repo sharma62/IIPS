@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
                     <td><?php echo $due_amut ? "&#8377; ".$due_amut." /-":" " ;?></td>
                 </tr>
             </table>
-            <button class="btn btn-primary offset-8 mt-3 disabled" role="button" name="submit"> Process To Pay </button>
+            <button class="btn btn-primary offset-8 mt-3 " role="button" name="submit"> Process To Pay </button>
         </div>
     </div>
 </div>
