@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
 
                 <tr>
                     <th>Admission No. </th>
-                    <td><?php echo mysqli_num_rows($res)?$addmission_no:" " ?></td>
+                    <td><?php echo $addmission_no ?></td>
                 </tr>
                 <tr>
                     <th>Name</th>
